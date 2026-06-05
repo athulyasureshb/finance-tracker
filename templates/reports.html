@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Reports & Insights</h1>
+
+{% if insights %}
+<div class="insights">
+    <h2>💡 Insights</h2>
+    <ul>
+        {% for insight in insights %}
+        <li>{{ insight }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+{% if monthly_data %}
+<div class="chart-container">
+    <h2>Monthly Income vs Expenses</h2>
+    <canvas id="barChart"></canvas>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Month</th>
+            <th>Income</th>
+            <th>Expenses</th>
+            <th>Net</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for month, data in monthly_data.items() %}
+        <tr>
+            <td>{{ month }}</td>
+            <td>${{ "%.2f"|format(data.income) }}</td>
+            <td>${{ "%.2f"|format(data.expense) }}</td>
+            <td>${{ "%.2f"|format(data.income - data.expense) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script>
+    const monthlyData = {{ monthly_data | tojson }};
+</script>
+{% else %}
+<p>No data yet. Add some transactions first!</p>
+{% endif %}
+{% endblock %}

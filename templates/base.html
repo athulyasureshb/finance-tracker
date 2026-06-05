@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+{% if current_user.is_authenticated %}
+<nav>
+    <div class="nav-brand">💰 FinanceTracker</div>
+    <div class="nav-links">
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('transactions') }}">Transactions</a>
+        <a href="{{ url_for('add_transaction') }}">+ Add</a>
+        <a href="{{ url_for('reports') }}">Reports</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+    <div class="nav-user">👤 {{ current_user.name }}</div>
+</nav>
+{% endif %}
+
+<div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</div>
+
+<script src="{{ url_for('static', filename='charts.js') }}"></script>
+</body>
+</html>

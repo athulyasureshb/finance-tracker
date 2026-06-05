@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Welcome, {{ current_user.name }} 👋</h1>
+
+<div class="cards">
+    <div class="card card-balance">
+        <h3>Balance</h3>
+        <p>${{ "%.2f"|format(balance) }}</p>
+    </div>
+    <div class="card card-income">
+        <h3>Total Income</h3>
+        <p>${{ "%.2f"|format(total_income) }}</p>
+    </div>
+    <div class="card card-expense">
+        <h3>Total Expenses</h3>
+        <p>${{ "%.2f"|format(total_expense) }}</p>
+    </div>
+</div>
+
+{% if category_data %}
+<div class="chart-container">
+    <h2>Spending by Category</h2>
+    <canvas id="pieChart"></canvas>
+</div>
+{% endif %}
+
+<div class="recent-transactions">
+    <h2>Recent Transactions</h2>
+    {% if recent %}
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in recent %}
+            <tr class="{{ t.type }}">
+                <td>{{ t.date }}</td>
+                <td>{{ t.type|capitalize }}</td>
+                <td>{{ t.category }}</td>
+                <td>${{ "%.2f"|format(t.amount) }}</td>
+                <td>{{ t.note }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No transactions yet. <a href="{{ url_for('add_transaction') }}">Add one!</a></p>
+    {% endif %}
+</div>
+
+<script>
+    // category data from Flask
+    var categoryData = {{ category_data | tojson | safe }};
+</script>
+{% endblock %}

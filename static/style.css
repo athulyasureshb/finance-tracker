@@ -1,0 +1,129 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f0f2f5;
+    color: #333;
+}
+
+nav {
+    background: #1a1a2e;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav a { color: #ccc; text-decoration: none; margin: 0 0.75rem; }
+nav a:hover { color: white; }
+.nav-brand { font-size: 1.2rem; font-weight: bold; }
+
+.container { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+
+.alert {
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+.alert-success { background: #d4edda; color: #155724; }
+.alert-danger  { background: #f8d7da; color: #721c24; }
+.alert-info    { background: #d1ecf1; color: #0c5460; }
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.card h3 { font-size: 0.9rem; color: #666; margin-bottom: 0.5rem; }
+.card p  { font-size: 2rem; font-weight: bold; }
+.card-balance p { color: #1a1a2e; }
+.card-income p  { color: #28a745; }
+.card-expense p { color: #dc3545; }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-top: 1rem;
+}
+th { background: #1a1a2e; color: white; padding: 0.75rem 1rem; text-align: left; }
+td { padding: 0.75rem 1rem; border-bottom: 1px solid #eee; }
+tr.income td:nth-child(4) { color: #28a745; font-weight: bold; }
+tr.expense td:nth-child(4) { color: #dc3545; font-weight: bold; }
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.95rem;
+    margin: 0.25rem;
+}
+.btn-primary   { background: #1a1a2e; color: white; }
+.btn-secondary { background: #6c757d; color: white; }
+.btn-danger    { background: #dc3545; color: white; font-size: 0.8rem; padding: 0.3rem 0.8rem; }
+.btn:hover { opacity: 0.85; }
+
+.auth-card, .form-card {
+    background: white;
+    max-width: 420px;
+    margin: 3rem auto;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+.auth-card h2, .form-card h2 { margin-bottom: 1.5rem; }
+
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; margin-bottom: 0.3rem; font-weight: 500; color: #555; }
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #1a1a2e;
+}
+
+.chart-container {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    max-width: 500px;
+}
+
+.insights {
+    background: #fff8e1;
+    border-left: 4px solid #ffc107;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.insights ul { padding-left: 1.2rem; margin-top: 0.5rem; }
+.insights li { margin-bottom: 0.4rem; }
+
+.recent-transactions { margin-top: 2rem; }
+h1 { margin-bottom: 1rem; }
+h2 { margin-bottom: 0.75rem; color: #1a1a2e; }
