@@ -9,7 +9,7 @@ A full-stack web app built with Python Flask, Jinja2, SQLite, and Pandas.
 - **Flask-Login** — Authentication
 - **Flask-Bcrypt** — Password hashing
 - **Pandas** — Data analysis
-- **Chart.js** — Charts
+- **Chart.js** — Charts(via CDN)
 
 ## ✨ Features
 - 🔐 User registration & login
